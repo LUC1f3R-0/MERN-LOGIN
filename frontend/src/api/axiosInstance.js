@@ -1,11 +1,9 @@
-import React from 'react'
+import axios from 'axios'
 
-const axiosInstance = () => {
-    return (
-        <div>
-
-        </div>
-    )
-}
+const axiosInstance = axios.create({
+    baseURL: '127.0.0.1',
+    timeout: 5000,
+    headers: { 'Content-Type': 'application/json' }
+})
 
 export default axiosInstance

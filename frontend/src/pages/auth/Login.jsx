@@ -1,8 +1,22 @@
 import React from 'react'
 import '../../assets/css/styles.min.css'
 import { NavLink } from 'react-router-dom'
+import axiosInstance from '../../api/axiosInstance'
 
 const Login = () => {
+    const fetchData = async (e) => {
+        const response = await axiosInstance.post('/login', e)
+        console.log(response)
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        const formJson = Object.fromEntries(formData.entries());
+        fetchData(formJson);
+    }
+
     return (
         <>
             <section>
@@ -19,14 +33,14 @@ const Login = () => {
                                                 <img src="../assets/images/logos/logo-light.svg" alt="" />
                                             </NavLink>
                                             <p className="text-center">Your Social Campaigns</p>
-                                            <form>
+                                            <form onSubmit={handleSubmit}>
                                                 <div className="mb-3">
-                                                    <label htmlFor="exampleInputEmail1" className="form-label">Username</label>
-                                                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                                    <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
+                                                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='email' />
                                                 </div>
                                                 <div className="mb-4">
                                                     <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                                                    <input type="password" className="form-control" id="exampleInputPassword1" />
+                                                    <input type="password" className="form-control" id="exampleInputPassword1" name="password" />
                                                 </div>
                                                 <div className="d-flex align-items-center justify-content-between mb-4">
                                                     <div className="form-check">
@@ -37,7 +51,7 @@ const Login = () => {
                                                     </div>
                                                     <NavLink className="text-primary fw-bold" to={'/reset-password'}>Forgot Password ?</NavLink>
                                                 </div>
-                                                <a href="./index.html" className="btn btn-primary w-100 py-8 fs-4 mb-4">Sign In</a>
+                                                <button type='submit' className="btn btn-primary w-100 py-8 fs-4 mb-4" >Sign In</button>
                                                 <div className="d-flex align-items-center justify-content-center">
                                                     <p className="fs-4 mb-0 fw-bold">New to SeoDash?</p>
                                                     <NavLink className="text-primary fw-bold ms-2" to={'/register'}>Create an account</NavLink>
