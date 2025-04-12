@@ -4,8 +4,8 @@ import axiosInstance from '../api/axiosInstance'
 const Home = () => {
     React.useEffect(() => {
         const fetchDate = async () => {
-            const response = await axiosInstance('/')
-            console.log(response)
+            const { data } = await axiosInstance('/')
+            console.log(data)
         }
         fetchDate()
     }, [])
