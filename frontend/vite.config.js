@@ -2,6 +2,8 @@
 // defineConfig: Helper function that provides type hints for the configuration
 // loadEnv: Utility to load environment variables from .env files
 import { defineConfig, loadEnv } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
+
 
 // Import the React plugin which enables React support in Vite
 // This plugin handles JSX transformation and provides React-specific optimizations
@@ -20,19 +22,19 @@ export default defineConfig(({ mode }) => {
   // - '': The prefix for env variables to load. Empty string means load all variables
   //   (By default, only variables prefixed with VITE_ are loaded)
   const env = loadEnv(mode, process.cwd(), '')
-  
+
   // Return the configuration object
   return {
     // Add plugins to extend Vite's functionality
     // Here we only add the React plugin to enable JSX support and React-specific features
-    plugins: [react()],
-    
+    plugins: [tailwindcss(), react()],
+
     // Configure the development server
     server: {
       // Set the host address from the environment variable
       // This is the network interface that Vite will listen on
       host: (env.VITE_FRONTEND_HOST),
-      
+
       // Set the port from the environment variable
       // parseInt converts the string from the .env file to a number
       // This is the TCP port that Vite will use for the development server
