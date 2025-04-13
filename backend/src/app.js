@@ -8,6 +8,7 @@ const port = process.env.FRONTEND_PORT
 
 app.use(cors({ origin: `http://${host}:${port}`, credentials: true }));
 
+app.use(express.json())
 app.use('/', router)
 
 export default app
