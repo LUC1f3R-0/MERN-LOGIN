@@ -51,7 +51,7 @@ const Login = () => {
                                                     </div>
                                                     <NavLink className="text-primary fw-bold" to={'/reset-password'}>Forgot Password ?</NavLink>
                                                 </div>
-                                                <button type='submit' className="btn btn-primary w-100 py-8 fs-4 mb-4" >Sign In</button>
+                                                <button type='submit' className="btn btn-primary w-100 py-8 fs-4 mb-4">Sign In</button>
                                                 <div className="d-flex align-items-center justify-content-center">
                                                     <p className="fs-4 mb-0 fw-bold">New to SeoDash?</p>
                                                     <NavLink className="text-primary fw-bold ms-2" to={'/register'}>Create an account</NavLink>
